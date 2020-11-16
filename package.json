@@ -1,0 +1,12 @@
+{
+  "name": "disrupt21-video-phone",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ibrunera/disrupt21-video-phone.git",
+  "author": "Bruno T. <bteixeira010@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^3.0.1"
+  }
+}
