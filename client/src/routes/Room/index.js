@@ -1,40 +1,40 @@
-  
+
 import React, { useRef, useEffect } from 'react'
 import io from 'socket.io-client'
 import Header from '../../components/Header'
 
 const Room = (props) => {
-    const userVideo = useRef()
-    const partnerVideo = useRef()
-    const peerRef = useRef()
-    const socketRef = useRef()
-    const otherUser = useRef()
-    const userStream = useRef()
+  const userVideo = useRef()
+  const partnerVideo = useRef()
+  const peerRef = useRef()
+  const socketRef = useRef()
+  const otherUser = useRef()
+  const userStream = useRef()
 
-    useEffect(() => {
-      navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(stream => {
-          userVideo.current.srcObject = stream
-          userStream.current = stream
+  useEffect(() => {
+    navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(stream => {
+      userVideo.current.srcObject = stream
+      userStream.current = stream
 
-          socketRef.current = io.connect('/')
+      socketRef.current = io.connect('/')
 
-          socketRef.current.emit('join-room', props.match.params.roomID)
+      socketRef.current.emit('join-room', props.match.params.roomID)
 
-          socketRef.current.on('other-user', userId => {
-              callUser(userId)
-              otherUser.current = userId
-          })
-
-          socketRef.current.on('user-joined', userId => {
-              otherUser.current = userId
-          })
-
-          socketRef.current.on('offer', handleRecieveCall)
-
-          socketRef.current.on('answer', handleAnswer)
-
-          socketRef.current.on('ice-candidate', handleNewICECandidateMsg)
+      socketRef.current.on('other-user', userId => {
+        callUser(userId)
+        otherUser.current = userId
       })
+
+      socketRef.current.on('user-joined', userId => {
+        otherUser.current = userId
+      })
+
+      socketRef.current.on('offer', handleRecieveCall)
+
+      socketRef.current.on('answer', handleAnswer)
+
+      socketRef.current.on('ice-candidate', handleNewICECandidateMsg)
+    })
 
   }, [])
 
@@ -122,11 +122,9 @@ const Room = (props) => {
 
   return (
     <div>
-      <Header title="VISAPHONE"/>
-      <div className="userVideo">
+      <Header title="VISAPHONE" />
+      <div className="video">
         <video autoPlay ref={userVideo} />
-      </div>
-      <div className="partnerVideo">
         <video autoPlay ref={partnerVideo} />
       </div>
     </div>

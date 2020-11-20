@@ -23,17 +23,17 @@ io.on('connection', socket => {
 
     socket.on('offer', payload => {
         io.to(payload.target).emit('offer', payload)
-        console.log(`offer id:(${scoket.id}) target:(${paload.target}) payload:(${payload})`)
+        console.log(`offer id:(${socket.id}) target:(${payload.target}) payload:(${payload})`)
     })
 
     socket.on('answer', payload => {
         io.to(payload.target).emit('answer', payload)
-        console.log(`answer: id:(${scoket.id}) target:(${paload.target}) payload:(${payload})`)
+        console.log(`answer: id:(${socket.id}) target:(${payload.target}) payload:(${payload})`)
     })
 
     socket.on('ice-candidate', incoming => {
         io.to(incoming.target).emit('ice-candidate', incoming.candidate)
-        console.log(`ice-candidade id:(${scoket.id}) target:(${incoming.target}) candidate:(${incoming.candidate})`)
+        console.log(`ice-candidade id:(${socket.id}) target:(${incoming.target}) candidate:(${incoming.candidate})`)
     })
 })
 
