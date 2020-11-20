@@ -1,0 +1,26 @@
+.page-header {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom right, rgb(188, 255, 202), rgb(74, 226, 107));
+}
+.page-header .container {
+  height: 60px;
+  width: 95%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 1.6rem 0;
+}
+
+.page-header strong {
+  font-size: 40px;
+  font-family: 'Roboto', sans-serif;
+  color: rgb(194, 161, 17);
+}
+
+.page-header img {
+  height:50px;
+}
+

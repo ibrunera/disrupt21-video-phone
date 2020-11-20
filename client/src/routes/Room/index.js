@@ -1,6 +1,7 @@
   
 import React, { useRef, useEffect } from 'react'
 import io from 'socket.io-client'
+import Header from '../../components/Header'
 
 const Room = (props) => {
     const userVideo = useRef()
@@ -121,8 +122,13 @@ const Room = (props) => {
 
   return (
     <div>
-      <video autoPlay ref={userVideo} />
-      <video autoPlay ref={partnerVideo} />
+      <Header title="VISAPHONE"/>
+      <div className="userVideo">
+        <video autoPlay ref={userVideo} />
+      </div>
+      <div className="partnerVideo">
+        <video autoPlay ref={partnerVideo} />
+      </div>
     </div>
   )
 }
