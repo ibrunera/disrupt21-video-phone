@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import CreateRoom from './routes/CreateRoom'
 import Room from './routes/Room'
 
-import './App.css';
+import './styles.css';
 
 function App() {
   return (
